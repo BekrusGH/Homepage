@@ -1,0 +1,146 @@
+body {
+  background-color: black;
+  color: lime;
+  font-family: monospace;
+  font-size: 2em;
+  padding: 2em;
+}
+
+.terminal {
+  display: inline;
+  white-space: pre-wrap; /* This makes newlines work properly */
+}
+
+.cursor {
+  text-align: center;
+  display: inline-block;
+  width: 0.6em;
+  background-color: lime;
+  margin-left: 0.1em;
+  animation: blink 1s step-start infinite;
+  
+}
+
+@keyframes blink {
+  50% { background-color: transparent; }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  padding: 2em;
+}
+
+.terminal-box {
+  background-color: black;
+  color: lime;
+  font-family: monospace;
+  font-size: 1.5em;
+  padding: 1em;
+  border: 1px solid lime;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.terminal-box:hover {
+  background-color: #003300;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.terminal-box::after {
+  content: "█";
+  animation: blink 1s step-start infinite;
+  margin-left: 0.2em;
+}
+
+.terminal-box:focus {
+  outline: none;
+  background-color: lime;
+  color: black;
+}
+
+.terminal-box:focus::after {
+  content: " ▋";
+  animation: blink 1s step-start infinite;
+  margin-left: 0.2em;
+}
+
+.search-container {
+  margin: 2em 0;
+}
+
+#searchForm {
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  color: lime;
+  font-size: 1.5em;
+}
+
+#searchForm label {
+  margin-right: 0.5em;
+}
+
+#q {
+  background-color: black;
+  color: lime;
+  border: none;
+  border-bottom: 1px solid lime;
+  font-family: monospace;
+  font-size: 1em;
+  padding: 0.5em;
+  width: 100%;
+  outline: none;
+}
+
+#q::placeholder {
+  color: #0f0;
+  opacity: 0.6;
+}
+
+
+.terminal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2em;
+}
+
+.terminal-text {
+  color: lime;
+  font-family: monospace;
+  font-size: 1.2em;
+  background-color: black;
+  padding: 1em;
+  border-left: 3px solid lime;
+  max-width: 800px;
+}
+
+.terminal-text h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.terminal-text ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.terminal-text li::before {
+  content: "• ";
+  color: lime;
+}
